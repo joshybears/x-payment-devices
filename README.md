@@ -43,6 +43,7 @@ In this project, we use Pipenv to install Python dependencies that we need, for 
 1. Make sure you have Pipenv installed (https://pipenv.pypa.io/en/latest/installation.html)
 2. Simply run `pipenv install` in the main directory
    - This will install all the libraries and dependencies that the project needs according to the Pipfile
+3. Set environment variables SNOWFLAKE_ACCOUNT, SNOWFLAKE_USER, SNOWFLAKE_PASSWORD
 
 ### Data Loader
 In this project, we use a Python script to upload data from local files into Snowflake.
