@@ -1,0 +1,13 @@
+x_payment_devices:
+  outputs:
+    dev:
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      database: x_payment_devices
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: ACCOUNTADMIN
+      schema: analytics
+      threads: 1
+      type: snowflake
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      warehouse: x_payment_devices_wh
+  target: dev

@@ -1,0 +1,13 @@
+sources:
+  - name: product
+    schema: load
+    tables:
+      - name: devices  
+        identifier: device
+        description: "Product devices table"  
+      - name: stores  
+        identifier: store
+        description: "Product stores table"  
+      - name: transactions 
+        identifier: transaction
+        description: "Product transactions table"

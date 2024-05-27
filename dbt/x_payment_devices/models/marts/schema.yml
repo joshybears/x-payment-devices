@@ -1,0 +1,118 @@
+version: 2
+
+models:
+  - name: dim_store
+    description: "This table contains store information, enriched from the staging table `stg_product__stores`."
+    columns:
+      - name: store_id
+        description: "The unique identifier for each store."
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "The unique identifier for the customer associated with the store."
+        tests:
+          - not_null
+      - name: name
+        description: "The name of the store."
+        tests:
+          - not_null
+      - name: address
+        description: "The physical address of the store."
+      - name: city
+        description: "The city where the store is located."
+      - name: country
+        description: "The country where the store is located."
+      - name: typology
+        description: "The typology or category of the store."
+      - name: created_date
+        description: "The date when the store record was created."
+        tests:
+          - not_null
+      - name: created_at
+        description: "The timestamp when the store record was created."
+        tests:
+          - not_null
+  - name: dim_device
+    description: "This table contains device information, enriched from the staging table `stg_product__devices`."
+    columns:
+      - name: device_id
+        description: "The unique identifier for each device."
+        tests:
+          - unique
+          - not_null
+      - name: store_id
+        description: "The unique identifier for the store associated with the device."
+        tests:
+          - not_null
+      - name: type
+        description: "The type of the device."
+        tests:
+          - not_null
+  - name: dim_product
+    description: "This table contains product information, enriched from the staging table `stg_product__transactions`."
+    columns:
+      - name: product_sku
+        description: "The unique identifier for each product, also known as the product SKU."
+        tests:
+          - unique
+          - not_null
+      - name: product_name
+        description: "The name of the product."
+        tests:
+          - not_null
+  - name: fact_transaction
+    description: "This fact table contains transaction information, enriched from the staging tables `stg_product__transactions` and `stg_product__devices`."
+    columns:
+      - name: transaction_id
+        description: "The unique identifier for each transaction."
+        tests:
+          - unique
+          - not_null
+      - name: device_id
+        description: "The unique identifier for the device associated with the transaction."
+        tests:
+          - not_null
+      - name: store_id
+        description: "The unique identifier for the store associated with the device used in the transaction."
+        tests:
+          - not_null
+      - name: product_sku
+        description: "The unique identifier for the product involved in the transaction."
+        tests:
+          - not_null
+      - name: amount
+        description: "The monetary amount of the transaction."
+        tests:
+          - not_null
+      - name: status
+        description: "The status of the transaction (e.g., accepted, refused, cancelled)."
+        tests:
+          - not_null
+      - name: card_number
+        description: "The card number used in the transaction. For security, this field is masked."
+      - name: cvv
+        description: "The CVV code of the card used in the transaction. For security, this field is masked."
+      - name: is_payment_completed
+        description: "Indicates whether the payment for the transaction was completed (true/false)."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+      - name: created_date
+        description: "The date when the transaction record was created."
+        tests:
+          - not_null
+      - name: happened_date
+        description: "The date when the transaction occurred."
+        tests:
+          - not_null
+      - name: created_at
+        description: "The timestamp when the transaction record was created."
+        tests:
+          - not_null
+      - name: happened_at
+        description: "The timestamp when the transaction occurred."
+        tests:
+          - not_null
+

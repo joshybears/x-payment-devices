@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: stg_product__devices
+    description: "Devices table from product data."
+    columns:
+      - name: device_id
+        tests:
+          - unique
+          - not_null
+      - name: store_id
+        tests:
+          - not_null
+  - name: stg_product__stores
+    description: "Stores table from product data."
+    columns:
+      - name: store_id
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+  - name: stg_product__transactions
+    description: "Transactions table from product data."
+    columns:
+      - name: transaction_id
+        tests:
+          - unique
+          - not_null
+      - name: device_id
+        tests:
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values:
+                - cancelled
+                - refused
+                - accepted
