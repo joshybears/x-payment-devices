@@ -69,6 +69,7 @@ if __name__ == "__main__":
             conn.cursor().execute(f'''PUT file://{converted_file} @%{table}''')
             conn.cursor().execute(f'''COPY INTO {table} FILE_FORMAT = (TYPE = 'CSV' FIELD_DELIMITER = ',' SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '\"')''')
             print(f"File uploaded!")
+            os.remove(converted_file)
 
     print("All done!")
 

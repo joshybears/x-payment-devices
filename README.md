@@ -96,6 +96,7 @@ In this project, we use Pipenv to install Python dependencies that we need, for 
     - STG_PRODUCT__STORES
     - STG_PRODUCT__TRANSACTIONS
   - In this layer as well, we do basic tests to ensure that all data that lands in our WH is good and valid.
+  - To protect personal information, ideally we would apply masking to the PII (card number and CVV) for transactions table, and also restrict access to load layer, if we were using the enterprise version.
 
 3. Marts Layer (ANALYTICS_MARTS)
   - In this layer, the focus is on transforming the cleaned data from the staging layer into a more business-friendly format, organized into star schema entities. This involves creating fact and dimension tables to support analytical queries and reporting, while optimizing the data for performance and ease of use.

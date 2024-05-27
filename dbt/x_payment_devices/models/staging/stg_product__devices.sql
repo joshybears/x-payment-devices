@@ -1,7 +1,6 @@
 -- stg_product__devices.sql
 
 {{ config(materialized='view') }}
--- add uniques /not nulls?
 
 with
 
